@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Bday Countdown - 5hre9a</title>
+    <style>
+        p {
+            text-align: center;
+            font-size: 80px;
+            font-family: "Fira Code Retina" ;
+            font-style: oblique;
+            color: white;
+        }
+        body{
+            background-image: url('cake.jpg');
+            background-size: cover;
+
+        }
+    </style>
+</head>
+<body>
+<p id = "show" ></p>
+<script>
+    var t = setInterval(myTimer,1000);
+    function myTimer(){
+        var tillDate = new Date("August 23,2021 00:00:00").getTime();
+        var toDay = new Date().getTime();
+        var diff = tillDate - toDay;
+        var days = Math.floor(diff/(1000*60*60*24));
+        var hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        var mins = Math.floor((diff%(1000*60*60))/(1000*60));
+        var sec = Math.floor((diff%(1000*60))/1000);
+        days = checkTime(days);
+        hours = checkTime(hours);
+        mins = checkTime(mins);
+        sec = checkTime(sec);
+        document.getElementById("show").innerHTML= days + "d " + hours + "h " + mins + "m " + sec + "s to go!!" ;
+        if(diff<0){
+            clearInterval(t);
+            document.getElementById("show").innerHTML = "HAPPY BIRTHDAY TO SOMEONE WHO IS FOREVER YOUNG";
+        }
+    }
+    function checkTime(x) {
+        if (x < 10) {x = "0" + x};  // adding zero in front of numbers if < 10
+        return x;
+    }
+</script>
+</body>
+</html>
